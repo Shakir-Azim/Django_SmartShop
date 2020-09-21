@@ -77,12 +77,28 @@ WSGI_APPLICATION = 'SmartShop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'DEMO_TEST',
+        'USER': 'postgres',
+        'PASSWORD': 's#@kir27',
+        'HOST': 'localhost',
+        'PORT': '5432'
+    }
+}
+
+
+
 
 
 # Password validation
@@ -123,9 +139,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# manual---
 
-MEDIA_ROOT = BASE_DIR
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+# MEDIA_ROOT = BASE_DIR
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/img')
 MEDIA_URL = '/images/'
 # Activate Django-Heroku.
 django_heroku.settings(locals())

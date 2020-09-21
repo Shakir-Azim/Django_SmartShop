@@ -25,7 +25,8 @@ class Product(models.Model):
     price = models.FloatField(default=0)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     description = models.CharField(max_length=200, null=True, blank=True)
-    image = models.ImageField(upload_to='uploads/products/')
+    # image = models.ImageField(upload_to='uploads/products/')
+    image = models.ImageField(null=True, blank=True)
 
     def __str__(self):
         return self.name
